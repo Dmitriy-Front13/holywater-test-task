@@ -3,7 +3,7 @@ import { Schema, Types, model } from 'mongoose';
 
 interface IConfiguration {
   name: string;
-  sections: Types.ObjectId;
+  sections: Types.ObjectId[];
 }
 
 const configurationSchema = new Schema<IConfiguration>({

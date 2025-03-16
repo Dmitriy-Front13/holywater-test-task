@@ -7,6 +7,11 @@ export const getAllSections = async (_req: Request, res: Response) => {
 };
 
 export const addSection = async (req: Request, res: Response) => {
-  await Section.create(req.body);
-  res.json({ status: 200, massage: "Section added" });
+  try {
+    await Section.create(req.body);
+    res.json({ status: 200, massage: "Section added" });
+  } catch (e) {
+    console.log(e);
+    res.json({ status: 500, massage: "Something went wrong" });
+  }
 };
