@@ -1,13 +1,11 @@
 
-import { Schema, Types, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 interface ISection {
-  _id?: Types.ObjectId;
   type: string;
   title: string;
   showTitle: boolean;
   items: {
-    _id?: Types.ObjectId;
     title: string;
     description: string;
     image: string;
