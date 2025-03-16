@@ -11,4 +11,4 @@ const configurationSchema = new Schema<IConfiguration>({
   sections: [{ type: Schema.Types.ObjectId, ref: 'Section' }]
 })
 
-export const Section = model<IConfiguration>('Configuration', configurationSchema);
+export const Configuration = model<IConfiguration>('Configuration', configurationSchema);
