@@ -8,8 +8,8 @@ export const addSectionValidation = [
       throw new Error("Section name already exists");
     }
   }),
-  body("type", "Section type is required").isString().exists(),
-  body("title", "Section title is required").isString().exists(),
+  body("type", "Section type is required").isString().notEmpty(),
+  body("title", "Section title is required").isString().notEmpty(),
   body("showTitle", "Section showTitle is required").isBoolean().exists(),
   body("items", "Section items is required").isArray({ min: 1 }),
   body("items.*.title", "Item title is required").isString().notEmpty(),
