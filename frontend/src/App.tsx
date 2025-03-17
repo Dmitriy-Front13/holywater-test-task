@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { Header } from "./components/header";
+import { IConfig } from "./types";
+import { getAllConfigurations } from "./services/configuration.service";
+import { ErrorState } from "./components/errorState";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [configurations, setConfigurations] = useState<IConfig[]>();
+  const [activeConfig, setActiveConfig] = useState<IConfig>();
+  const [error, setError] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const fetchConfigurations = async () => {
+    try {
+      const data = await getAllConfigurations();
+      setConfigurations(data);
+      setActiveConfig(data[0]);
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchConfigurations();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container mx-auto p-6">
+      {error ? (
+        <ErrorState message={error} />
+      ) : (
+        <Header
+          configurations={configurations!}
+          activeConfig={activeConfig!}
+          setActiveConfig={setActiveConfig}
+          loading={loading}
+        />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

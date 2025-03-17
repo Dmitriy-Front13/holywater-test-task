@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev": "yarn workspace frontend dev && yarn workspace backend dev"
+  },
   "workspaces": [
     "backend",
     "frontend"
