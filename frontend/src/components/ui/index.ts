@@ -5,7 +5,6 @@ export * from './label';
 export * from './switch';
 export * from './sonner';
 export * from './select';
-export * from './skeleton';
 export * from './textarea';
 export * from './alert';
 export * from './tabs';

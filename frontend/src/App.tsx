@@ -3,6 +3,8 @@ import { Header } from "./components/header";
 import { IConfig } from "./types";
 import { getAllConfigurations } from "./services/configuration.service";
 import { ErrorState } from "./components/errorState";
+import { ConfigurationSetting } from "./components/configurationSetting";
+import { LoadingState } from "./components/loadingState";
 
 function App() {
   const [configurations, setConfigurations] = useState<IConfig[]>();
@@ -28,15 +30,20 @@ function App() {
 
   return (
     <div className="container mx-auto p-6">
-      {error ? (
-        <ErrorState message={error} />
-      ) : (
-        <Header
-          configurations={configurations!}
-          activeConfig={activeConfig!}
-          setActiveConfig={setActiveConfig}
-          loading={loading}
-        />
+      {error && <ErrorState message={error} />}
+      {loading && <LoadingState />}
+      {!error && !loading && (
+        <>
+          <Header
+            configurations={configurations!}
+            activeConfig={activeConfig!}
+            setActiveConfig={setActiveConfig}
+          />
+          <ConfigurationSetting
+            activeConfig={activeConfig!}
+            setActiveConfig={setActiveConfig}
+          />
+        </>
       )}
     </div>
   );
