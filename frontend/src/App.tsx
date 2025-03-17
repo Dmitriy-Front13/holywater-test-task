@@ -5,17 +5,19 @@ import { getAllConfigurations } from "./services/configuration.service";
 import { ErrorState } from "./components/errorState";
 import { ConfigurationSetting } from "./components/configurationSetting";
 import { LoadingState } from "./components/loadingState";
+import { useAppDispatch } from "./redux/store";
+import { addActiveConfig } from "./redux/activeConfigSlice";
 
 function App() {
   const [configurations, setConfigurations] = useState<IConfig[]>();
-  const [activeConfig, setActiveConfig] = useState<IConfig>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useAppDispatch();
   const fetchConfigurations = async () => {
     try {
       const data = await getAllConfigurations();
       setConfigurations(data);
-      setActiveConfig(data[0]);
+      dispatch(addActiveConfig(data[0]));
     } catch (e) {
       if (e instanceof Error) {
         setError(e.message);
@@ -34,15 +36,8 @@ function App() {
       {loading && <LoadingState />}
       {!error && !loading && (
         <>
-          <Header
-            configurations={configurations!}
-            activeConfig={activeConfig!}
-            setActiveConfig={setActiveConfig}
-          />
-          <ConfigurationSetting
-            activeConfig={activeConfig!}
-            setActiveConfig={setActiveConfig}
-          />
+          <Header configurations={configurations!} />
+          <ConfigurationSetting />
         </>
       )}
     </div>

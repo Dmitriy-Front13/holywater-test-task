@@ -6,26 +6,24 @@ import {
   SelectValue,
   Button,
 } from "@/components/ui";
+import { addActiveConfig } from "@/redux/activeConfigSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { IConfig } from "@/types";
 interface IHeaderProps {
-  activeConfig: IConfig;
   configurations: IConfig[];
-  setActiveConfig: React.Dispatch<React.SetStateAction<IConfig | undefined>>;
 }
-export const Header = ({
-  activeConfig,
-  configurations,
-  setActiveConfig,
-}: IHeaderProps) => {
+export const Header = ({ configurations }: IHeaderProps) => {
+  const dispatch = useAppDispatch();
+  const activeConfigId = useAppSelector((state) => state.activeConfig._id);
   return (
     <div className="flex justify-between items-center mb-6">
       <h1 className="text-3xl font-bold">Панель адміністратора</h1>
       <div className="flex gap-2">
         <Select
-          value={activeConfig._id}
+          value={activeConfigId}
           onValueChange={(value) => {
             const selected = configurations.find((c) => c._id === value);
-            if (selected) setActiveConfig(selected);
+            if (selected) dispatch(addActiveConfig(selected));
           }}
         >
           <SelectTrigger className="w-[250px]">

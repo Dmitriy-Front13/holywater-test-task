@@ -10,15 +10,18 @@ import {
   Label,
 } from "../ui";
 import { IConfig } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { editName } from "@/redux/activeConfigSlice";
 
 interface ConfigurationSettingProps {
-  activeConfig: IConfig;
-  setActiveConfig: React.Dispatch<React.SetStateAction<IConfig | undefined>>;
+  // activeConfig: IConfig;
+  // setActiveConfig: React.Dispatch<React.SetStateAction<IConfig | undefined>>;
 }
-export const ConfigurationSetting = ({
-  activeConfig,
-  setActiveConfig,
-}: ConfigurationSettingProps) => {
+export const ConfigurationSetting = ({}: // setActiveConfig
+// activeConfig,
+ConfigurationSettingProps) => {
+  const dispatch = useAppDispatch();
+  const activeConfigName = useAppSelector((state) => state.activeConfig.name);
   return (
     <Card>
       <CardHeader>
@@ -44,9 +47,10 @@ export const ConfigurationSetting = ({
             <Label htmlFor="config-name">Назва конфігурації</Label>
             <Input
               id="config-name"
-              value={activeConfig.name}
+              value={activeConfigName}
               onChange={(e) =>
-                setActiveConfig({ ...activeConfig, name: e.target.value })
+                // setActiveConfig({ ...activeConfig, name: e.target.value })
+                dispatch(editName(e.target.value))
               }
             />
           </div>
