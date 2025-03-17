@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+  Button,
+} from "@/components/ui";
 import { IConfig } from "@/types";
 import { HeaderSkeleton } from "./headerSkeleton";
 interface IHeaderProps {
@@ -49,7 +49,7 @@ export const Header = ({
             <Button
             // onClick={createNewConfig}
             >
-              Create New
+              Додати нову конфігурацію
             </Button>
           </>
         )}
