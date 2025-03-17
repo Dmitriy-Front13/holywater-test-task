@@ -6,22 +6,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  Input,
   Label,
 } from "../ui";
-import { IConfig } from "@/types";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { editName } from "@/redux/activeConfigSlice";
+import { EditNameInput } from "./editNameInput";
 
-interface ConfigurationSettingProps {
-  // activeConfig: IConfig;
-  // setActiveConfig: React.Dispatch<React.SetStateAction<IConfig | undefined>>;
-}
-export const ConfigurationSetting = ({}: // setActiveConfig
-// activeConfig,
-ConfigurationSettingProps) => {
-  const dispatch = useAppDispatch();
-  const activeConfigName = useAppSelector((state) => state.activeConfig.name);
+interface ConfigurationSettingProps {}
+export const ConfigurationSetting = ({}: ConfigurationSettingProps) => {
   return (
     <Card>
       <CardHeader>
@@ -45,14 +35,7 @@ ConfigurationSettingProps) => {
         <div className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="config-name">Назва конфігурації</Label>
-            <Input
-              id="config-name"
-              value={activeConfigName}
-              onChange={(e) =>
-                // setActiveConfig({ ...activeConfig, name: e.target.value })
-                dispatch(editName(e.target.value))
-              }
-            />
+            <EditNameInput />
           </div>
         </div>
       </CardContent>
