@@ -7,6 +7,8 @@ import { ConfigurationSetting } from "./components/configurationSetting";
 import { LoadingState } from "./components/loadingState";
 import { useAppDispatch } from "./redux/store";
 import { addActiveConfig } from "./redux/activeConfigSlice";
+import { ScreenEditor } from "./components/screenEditor";
+import { MobilePreview } from "./components/mobilePreview";
 
 function App() {
   const [configurations, setConfigurations] = useState<IConfig[]>();
@@ -37,7 +39,13 @@ function App() {
       {!error && !loading && (
         <>
           <Header configurations={configurations!} />
-          <ConfigurationSetting />
+          <div className="space-y-4">
+            <ConfigurationSetting />
+            <div className="grid grid-cols-[1fr_600px] gap-6">
+              <ScreenEditor />
+              <MobilePreview />
+            </div>
+          </div>
         </>
       )}
     </div>
