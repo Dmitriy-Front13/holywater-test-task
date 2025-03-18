@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui";
 import { Code, Smartphone } from "lucide-react";
-import { JsonView } from "../jsonView";
+import { JsonPreview } from "../jsonPreview";
 export const MobilePreviewTabs = () => {
   return (
     <Tabs defaultValue="device" className="w-full">
@@ -16,7 +16,7 @@ export const MobilePreviewTabs = () => {
       </TabsList>
       <TabsContent value="device"></TabsContent>
       <TabsContent value="json">
-        <JsonView />
+        <JsonPreview />
       </TabsContent>
     </Tabs>
   );

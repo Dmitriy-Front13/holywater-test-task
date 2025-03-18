@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/redux/store";
 
-export const JsonView = () => {
+export const JsonPreview = () => {
   const activeConfig = useAppSelector((state) => state.activeConfig);
   return (
     <div>
