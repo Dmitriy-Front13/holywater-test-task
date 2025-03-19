@@ -1,20 +1,11 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui";
 import { PreviewTabs } from "./previewTabs";
 
 export const Preview = () => {
   return (
-    <Card className="sticky top-6">
+    <Card className="sticky top-px h-fit gap-3">
       <CardHeader>
-        <CardTitle>Preview</CardTitle>
-        <CardDescription>
-          Preview your configuration as a mobile device or JSON
-        </CardDescription>
+        <CardTitle>Попередній вигляд</CardTitle>
       </CardHeader>
       <CardContent>
         <PreviewTabs />

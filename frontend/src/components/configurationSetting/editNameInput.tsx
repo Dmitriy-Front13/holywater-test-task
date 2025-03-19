@@ -1,4 +1,4 @@
-import { editName } from "@/redux/activeConfigSlice";
+import { editConfigName } from "@/redux/activeConfigSlice";
 import { Input } from "../ui";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 
@@ -9,7 +9,7 @@ export const EditNameInput = () => {
     <Input
       id="config-name"
       value={activeConfigName}
-      onChange={(e) => dispatch(editName(e.target.value))}
+      onChange={(e) => dispatch(editConfigName(e.target.value))}
     />
   );
 };

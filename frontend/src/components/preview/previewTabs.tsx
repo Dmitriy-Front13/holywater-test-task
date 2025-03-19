@@ -8,7 +8,7 @@ export const PreviewTabs = () => {
       <TabsList className="flex w-full">
         <TabsTrigger value="device" className="flex items-center gap-2">
           <Smartphone className="h-4 w-4" />
-          Устройство
+          Мобільний застосунок
         </TabsTrigger>
         <TabsTrigger value="json" className="flex items-center gap-2">
           <Code className="h-4 w-4" />

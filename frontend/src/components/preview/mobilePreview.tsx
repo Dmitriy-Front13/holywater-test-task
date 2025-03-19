@@ -21,7 +21,7 @@ export const MobilePreview = () => {
         )}
         {sections.map((section) => (
           <div key={section._id} className="mb-6">
-            {section.showTitle && (
+            {section.title && (
               <h3 className="text-lg font-bold mb-2">{section.title}</h3>
             )}
 
@@ -29,7 +29,7 @@ export const MobilePreview = () => {
               <Banner section={section} />
             )}
 
-            {section.type === "silder" && <Slider section={section} />}
+            {section.type === "slider" && <Slider section={section} />}
 
             {section.type === "horizontalList" && (
               <HorizontalList section={section} />

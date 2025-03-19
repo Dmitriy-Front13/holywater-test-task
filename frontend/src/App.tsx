@@ -19,7 +19,8 @@ function App() {
     try {
       const data = await getAllConfigurations();
       setConfigurations(data);
-      dispatch(addActiveConfig(data[0]));
+      const mainConfig = data.find((config) => config.isMain);
+      dispatch(addActiveConfig(mainConfig!));
     } catch (e) {
       if (e instanceof Error) {
         setError(e.message);
