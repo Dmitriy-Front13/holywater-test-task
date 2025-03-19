@@ -8,7 +8,7 @@ import { LoadingState } from "./components/loadingState";
 import { useAppDispatch } from "./redux/store";
 import { addActiveConfig } from "./redux/activeConfigSlice";
 import { ScreenEditor } from "./components/screenEditor";
-import { MobilePreview } from "./components/mobilePreview";
+import { Preview } from "./components/preview";
 
 function App() {
   const [configurations, setConfigurations] = useState<IConfig[]>();
@@ -43,7 +43,7 @@ function App() {
             <ConfigurationSetting />
             <div className="grid grid-cols-[1fr_600px] gap-6">
               <ScreenEditor />
-              <MobilePreview />
+              <Preview />
             </div>
           </div>
         </>

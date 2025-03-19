@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui";
-import { MobilePreviewTabs } from "./mobilePreviewTabs";
+import { PreviewTabs } from "./previewTabs";
 
-export const MobilePreview = () => {
+export const Preview = () => {
   return (
     <Card className="sticky top-6">
       <CardHeader>
@@ -17,7 +17,7 @@ export const MobilePreview = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <MobilePreviewTabs />
+        <PreviewTabs />
       </CardContent>
     </Card>
   );

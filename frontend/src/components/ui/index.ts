@@ -8,3 +8,4 @@ export * from './select';
 export * from './textarea';
 export * from './alert';
 export * from './tabs';
+export * from './carousel';
