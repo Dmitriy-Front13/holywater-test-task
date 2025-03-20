@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import configurationReducer from './activeConfigSlice';
 export const store = configureStore({
   reducer: {
-    activeConfig: configurationReducer
+    activeConfig: configurationReducer,
   }
 })
 

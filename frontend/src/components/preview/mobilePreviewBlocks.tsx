@@ -14,7 +14,7 @@ export const Slider = ({ section }: IMobilePreviewBlockProps) => {
         {section.items.map((item) => (
           <CarouselItem key={item.title}>
             <img
-              src={item.imageURL || "/placeholder.svg"}
+              src={`/${item.imageURL}` || "/placeholder.svg"}
               alt={item.title}
               className="w-[200px] h-[300px] mx-auto object-cover rounded-lg"
             />
@@ -62,7 +62,7 @@ export const HorizontalGrid = ({ section }: IMobilePreviewBlockProps) => {
     <div className="grid grid-rows-[160px_160px] grid-flow-col auto-cols-[calc((100%-3rem)/2)] gap-3 overflow-x-auto">
       {section.items.map((item) => (
         <img
-          src={item.imageURL || "/placeholder.svg"}
+          src={`/${item.imageURL}` || "/placeholder.svg"}
           alt={item.title}
           className="w-full h-full object-cover rounded-lg"
           key={item._id}
@@ -78,7 +78,7 @@ export const VerticalGrid = ({ section }: IMobilePreviewBlockProps) => {
       {section.items.map((item) => (
         <div key={item._id} className="overflow-hidden">
           <img
-            src={item.imageURL || "/placeholder.svg"}
+            src={`/${item.imageURL}` || "/placeholder.svg"}
             alt={item.title}
             className="w-full aspect-1/2 object-cover rounded-lg mb-1"
           />
@@ -95,7 +95,7 @@ export const HorizontalList = ({ section }: IMobilePreviewBlockProps) => {
       {section.items.map((item) => (
         <div key={item._id} className="flex-shrink-0 w-[100px]">
           <img
-            src={item.imageURL || "/placeholder.svg"}
+            src={`/${item.imageURL}` || "/placeholder.svg"}
             alt={item.title}
             className="w-full h-[160px] object-cover rounded-lg mb-1"
           />

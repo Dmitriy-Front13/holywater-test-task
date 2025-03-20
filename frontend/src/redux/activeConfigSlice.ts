@@ -1,12 +1,48 @@
 import { IItemListProps } from "@/components/screenEditor/itemsList";
 import { IConfig, ISection } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState: IConfig = {
-  _id: '',
+  _id: `temp-${uuidv4()}`,
   name: '',
   isMain: false,
-  sections: []
+  sections: [
+    {
+      _id: uuidv4(),
+      type: "slider",
+      items: [],
+    },
+    {
+      _id: uuidv4(),
+      type: "horizontalGrid",
+      title: "Top Chart",
+      items: [],
+    },
+    {
+      _id: uuidv4(),
+      type: "horizontalList",
+      title: "Most Trending",
+      items: [],
+    },
+    {
+      _id: uuidv4(),
+      type: "banner",
+      items: [],
+    },
+    {
+      _id: uuidv4(),
+      type: "horizontalList",
+      title: "Continue Watching",
+      items: [],
+    },
+    {
+      _id: uuidv4(),
+      type: "verticalGrid",
+      title: "Most Popular",
+      items: [],
+    },
+  ]
 }
 
 export const activeConfigSlice = createSlice({
@@ -15,6 +51,9 @@ export const activeConfigSlice = createSlice({
   reducers: {
     addActiveConfig(state, action: PayloadAction<IConfig>) {
       Object.assign(state, action.payload);
+    },
+    addNewActiveConfig(state) {
+      Object.assign(state, initialState);
     },
     editConfigName(state, action: PayloadAction<string>) {
       state.name = action.payload;
@@ -29,6 +68,6 @@ export const activeConfigSlice = createSlice({
   }
 })
 
-export const { addActiveConfig, editConfigName, editSections, editSectionItems } = activeConfigSlice.actions;
+export const { addActiveConfig, editConfigName, editSections, editSectionItems, addNewActiveConfig } = activeConfigSlice.actions;
 
 export default activeConfigSlice.reducer;

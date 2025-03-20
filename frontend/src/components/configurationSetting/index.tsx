@@ -1,6 +1,4 @@
-import { Save } from "lucide-react";
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
@@ -9,9 +7,9 @@ import {
   Label,
 } from "../ui";
 import { EditNameInput } from "./editNameInput";
+import { SaveConfigButton } from "./saveConfigButton";
 
-interface ConfigurationSettingProps {}
-export const ConfigurationSetting = ({}: ConfigurationSettingProps) => {
+export const ConfigurationSetting = () => {
   return (
     <Card>
       <CardHeader>
@@ -22,13 +20,7 @@ export const ConfigurationSetting = ({}: ConfigurationSettingProps) => {
               Змініть основні налаштування для цієї конфігурації
             </CardDescription>
           </div>
-          <Button
-            // onClick={saveConfig}
-            className="flex items-center gap-2"
-          >
-            <Save className="h-4 w-4" />
-            Зберегти налаштування
-          </Button>
+          <SaveConfigButton />
         </div>
       </CardHeader>
       <CardContent>
