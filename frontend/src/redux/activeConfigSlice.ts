@@ -1,12 +1,13 @@
 import { IItemListProps } from "@/components/screenEditor/items/itemsList";
 import { IConfig, ISection } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { v4 as uuidv4 } from 'uuid';
 
 const initialState: IConfig = {
   _id: "",
   name: '',
   isMain: false,
+  updatedAt: new Date(),
+  createdAt: new Date(),
   sections: []
 }
 

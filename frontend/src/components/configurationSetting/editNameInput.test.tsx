@@ -1,18 +1,19 @@
 import "@testing-library/jest-dom";
 import { RenderWithProvider } from "@/helpers/renderWithProvider";
 import { EditNameInput } from "./editNameInput";
-import { fireEvent } from "@testing-library/react";
+import { fireEvent, waitFor } from "@testing-library/react";
+import { store } from "@/redux/store";
 
 describe("EditNameInput test", () => {
-  it("изменяет значение при вводе текста", () => {
+  it("update value in redux on change input", async () => {
     const { getByRole } = RenderWithProvider(<EditNameInput />);
 
     const input = getByRole("textbox");
-    expect(input).toBeInTheDocument();
     expect(input).toHaveValue("");
 
     fireEvent.change(input, { target: { value: "New Config Name" } });
-
-    expect(input).toHaveValue("New Config Name");
+    await waitFor(() => {
+      expect(store.getState().activeConfig.name).toBe("New Config Name");
+    });
   });
 });
