@@ -48,7 +48,8 @@ const configurationSchema = new Schema<IConfiguration>({
         }
       ]
     }
-  ]
-})
+  ],
+
+}, { timestamps: true })
 
 export const Configuration = model<IConfiguration>('Configuration', configurationSchema);

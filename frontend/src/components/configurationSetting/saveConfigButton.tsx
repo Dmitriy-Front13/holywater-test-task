@@ -12,8 +12,8 @@ export const SaveConfigButton = () => {
   const saveConfig = async () => {
     try {
       setLoading(true);
-      updateConfiguration(config);
-      toast("Конфігурацію успішно оновлено");
+      const success = await updateConfiguration(config);
+      if (success) toast("Конфігурацію успішно оновлено");
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);

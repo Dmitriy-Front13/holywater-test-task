@@ -1,4 +1,3 @@
-import { Header } from "@/layout/header";
 import {
   Sidebar,
   SidebarContent,
@@ -10,9 +9,9 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar";
 import { Cog, Film } from "lucide-react";
-import { Link, Outlet } from "react-router";
+import { Link } from "react-router";
 
-export const AppSidebar = () => {
+export const AppSidebar = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <Sidebar variant="inset">
@@ -34,19 +33,16 @@ export const AppSidebar = () => {
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link to="/series">
+                <span>
                   <Film className="h-4 w-4" />
                   Серіали
-                </Link>
+                </span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarContent>
       </Sidebar>
-      <SidebarInset>
-        <Header />
-        <Outlet />
-      </SidebarInset>
+      <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
 };

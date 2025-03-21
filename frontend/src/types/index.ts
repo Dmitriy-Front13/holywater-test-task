@@ -26,5 +26,7 @@ export interface IConfig {
   _id: string;
   name: string;
   isMain: boolean;
+  createdAt: Date;
+  updatedAt: Date;
   sections: ISection[];
 }

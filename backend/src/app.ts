@@ -6,13 +6,14 @@ import configurationRouter from "./routes/configuration.route";
 import { getMainConfiguration } from "./controllers/configuration.controller";
 
 const port = process.env.PORT || 5000;
-
 const app = express();
 
 app.use(cors({
-  origin: process.env.CLIENT_URL
+  origin: process.env.CLIENT_URL,
 }));
+app.options('*', cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
+
 connectToDB();
 
 app.use("/api/configurations", configurationRouter);
