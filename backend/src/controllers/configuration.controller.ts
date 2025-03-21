@@ -14,10 +14,12 @@ export const getConfigurationById = async (req: Request, res: Response) => {
   res.json({ status: 200, data: configuration });
 }
 
-export const createConfiguration = async (req: Request, res: Response) => {
+export const createConfiguration = async (_req: Request, res: Response) => {
   try {
-    checkIsMain(req);
-    const newConfiguration = await Configuration.create(req.body);
+    // checkIsMain(req);
+    const mainConfiguration = await Configuration.findOne({ isMain: true }).lean();
+    const copyMainConfiguration = { ...mainConfiguration, _id: undefined, name: `${mainConfiguration!.name} copy` };
+    const newConfiguration = await Configuration.create(copyMainConfiguration);
     res.json({ status: 200, massage: "Configuration added", data: newConfiguration });
   } catch (e) {
     console.log(e);
