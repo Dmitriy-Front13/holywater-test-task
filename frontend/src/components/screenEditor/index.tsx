@@ -5,14 +5,16 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui";
-import { SectionsList } from "./SectionsList";
+import { SectionsList } from "./section/sectionsList";
 
 export const ScreenEditor = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Screen Sections</CardTitle>
-        <CardDescription>Drag and drop to reorder sections</CardDescription>
+        <CardTitle>Конфігурація секцій</CardTitle>
+        <CardDescription>
+          Перетягніть і відпустіть елементи, щоб змінити порядок порядок блоків.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <SectionsList />

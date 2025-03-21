@@ -32,7 +32,7 @@ export const Banner = ({ section }: IMobilePreviewBlockProps) => {
       <div className="w-full h-[140px] flex gap-3">
         <div className="w-1/3 h-full">
           <img
-            src={section.items[0].imageURL || "/placeholder.svg"}
+            src={`/${section.items[0].imageURL}` || "/placeholder.svg"}
             alt={section.items[0].title}
             className="w-full h-full object-cover rounded-lg"
           />
@@ -60,7 +60,7 @@ export const Banner = ({ section }: IMobilePreviewBlockProps) => {
 
 export const HorizontalGrid = ({ section }: IMobilePreviewBlockProps) => {
   return (
-    <div className="grid grid-rows-[160px_160px] grid-flow-col auto-cols-[calc((100%-3rem)/2)] gap-3 overflow-x-auto">
+    <div className="grid grid-rows-[160px_160px] grid-flow-col auto-cols-[calc((100%-3rem)/2)] gap-3 overflow-x-auto without-scrollbar">
       {section.items.map((item) => (
         <Fragment key={item._id}>
           <img
@@ -98,7 +98,7 @@ export const VerticalGrid = ({ section }: IMobilePreviewBlockProps) => {
 
 export const HorizontalList = ({ section }: IMobilePreviewBlockProps) => {
   return (
-    <div className="flex overflow-x-auto gap-3 pb-2">
+    <div className="flex overflow-x-auto without-scrollbar gap-3 pb-2">
       {section.items.map((item) => (
         <div key={item._id} className="flex-shrink-0 w-[100px]">
           <img

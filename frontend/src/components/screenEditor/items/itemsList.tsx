@@ -1,4 +1,4 @@
-import { DnDWrapper } from "./dndWrapper";
+import { DnDWrapper } from "../dndHelper/dndWrapper";
 import { ISectionItem } from "@/types";
 import { ItemComponent } from "./itemComponent";
 import { useAppDispatch } from "@/redux/store";
@@ -25,16 +25,6 @@ export const ItemsList = ({ items, sectionId }: IItemListProps) => {
   };
   return (
     <>
-      {/* <div className="flex justify-between items-center mb-2">
-        <h4 className="text-sm font-medium">Items</h4>
-        <Button
-          variant="outline"
-          size="sm"
-          // onClick={onAddItem}
-        >
-          Add Item
-        </Button>
-      </div> */}
       <DnDWrapper
         items={items.map((item) => item._id)}
         handleDragEnd={handleDragEnd}

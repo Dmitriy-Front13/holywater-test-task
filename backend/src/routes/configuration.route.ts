@@ -7,9 +7,7 @@ const configurationRouter = Router();
 
 configurationRouter.get("/", getAllConfigurations);
 configurationRouter.get("/:id", getConfigurationById);
-configurationRouter.post("/",
-  // configurationValidation, validate, 
-  createConfiguration);
+configurationRouter.post("/", createConfiguration);
 configurationRouter.patch("/:id", configurationValidation, validate, updateConfiguration);
 
 export default configurationRouter;

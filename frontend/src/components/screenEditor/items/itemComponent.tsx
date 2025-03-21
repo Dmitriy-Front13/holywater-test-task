@@ -1,6 +1,6 @@
 import { ISection } from "@/types";
-import { DragHandleItem } from "./dragHandleItem";
-import { useCustomSortable } from "@/hooks/useCustomSortable";
+import { DragHandleItem } from "../dndHelper/dragHandleItem";
+import { useCustomSortable } from "@/components/screenEditor/dndHelper/useCustomSortable";
 
 interface IItemComponentProps {
   item: ISection["items"][0];
@@ -28,16 +28,7 @@ export const ItemComponent = ({ item }: IItemComponentProps) => {
             )}
           </div>
         </div>
-        {/* <div className="flex gap-2">
-          <Button variant="outline" size="sm" onClick={onToggleEdit}>
-            {isEditing ? "Done" : "Edit"}
-          </Button>
-          <Button variant="destructive" size="sm" onClick={onRemove}>
-            <Trash2 className="h-4 w-4" />
-          </Button>
-        </div> */}
       </div>
-      {/* {isEditing && <ItemEditor item={item} onUpdate={onUpdate} />} */}
     </div>
   );
 };

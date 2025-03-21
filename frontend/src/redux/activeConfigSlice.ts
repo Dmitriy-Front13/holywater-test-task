@@ -1,4 +1,4 @@
-import { IItemListProps } from "@/components/screenEditor/itemsList";
+import { IItemListProps } from "@/components/screenEditor/items/itemsList";
 import { IConfig, ISection } from "@/types"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { v4 as uuidv4 } from 'uuid';
