@@ -46,7 +46,7 @@ export const ItemsList = ({ items, sectionId }: IItemListProps) => {
         )}
         <div className="space-y-2">
           {items.map((item) => (
-            <ItemComponent item={item} />
+            <ItemComponent item={item} key={item._id} />
           ))}
         </div>
       </DnDWrapper>

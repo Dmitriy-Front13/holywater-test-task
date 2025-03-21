@@ -21,7 +21,7 @@ export const MobilePreview = () => {
         )}
         {sections.map((section) => (
           <div key={section._id} className="mb-6">
-            {section.title && (
+            {section.showTitle && (
               <h3 className="text-lg font-bold mb-2">{section.title}</h3>
             )}
 

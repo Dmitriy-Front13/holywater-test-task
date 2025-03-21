@@ -15,9 +15,6 @@ export const SectionItem = ({ section }: ISectionItemProps) => {
         <div className="flex items-center gap-2">
           <DragHandleItem attributes={attributes} listeners={listeners} />
           <h3 className="text-lg font-medium">{section.title}</h3>
-          <span className="bg-muted text-muted-foreground text-xs px-2 py-1 rounded">
-            {section.type}
-          </span>
         </div>
       </div>
       <div className="mt-2">

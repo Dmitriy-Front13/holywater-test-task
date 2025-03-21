@@ -5,7 +5,7 @@ export const JsonPreview = () => {
   return (
     <div>
       <h3 className="text-lg font-medium mb-2">JSON Output</h3>
-      <pre className="bg-muted p-4 rounded-md overflow-auto max-h-[600px] text-sm">
+      <pre className="bg-muted p-4 rounded-md overflow-y-auto max-h-[600px] text-sm w-full">
         {JSON.stringify(activeConfig, null, 2)}
       </pre>
       <p className="text-sm text-muted-foreground mt-2">

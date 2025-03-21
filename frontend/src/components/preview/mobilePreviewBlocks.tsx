@@ -1,6 +1,7 @@
 import { ISection } from "@/types";
 import { Button, Carousel, CarouselContent, CarouselItem } from "../ui";
 import { Play } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 
 interface IMobilePreviewBlockProps {
   section: ISection;
@@ -12,7 +13,7 @@ export const Slider = ({ section }: IMobilePreviewBlockProps) => {
     <Carousel>
       <CarouselContent>
         {section.items.map((item) => (
-          <CarouselItem key={item.title}>
+          <CarouselItem key={item._id}>
             <img
               src={`/${item.imageURL}` || "/placeholder.svg"}
               alt={item.title}
@@ -61,12 +62,16 @@ export const HorizontalGrid = ({ section }: IMobilePreviewBlockProps) => {
   return (
     <div className="grid grid-rows-[160px_160px] grid-flow-col auto-cols-[calc((100%-3rem)/2)] gap-3 overflow-x-auto">
       {section.items.map((item) => (
-        <img
-          src={`/${item.imageURL}` || "/placeholder.svg"}
-          alt={item.title}
-          className="w-full h-full object-cover rounded-lg"
-          key={item._id}
-        />
+        <Fragment key={item._id}>
+          <img
+            src={`/${item.imageURL}` || "/placeholder.svg"}
+            alt={item.title}
+            className="w-full h-full object-cover rounded-lg"
+          />
+          {section.showItemsTitle && (
+            <div className="text-sm font-medium truncate">{item.title}</div>
+          )}
+        </Fragment>
       ))}
     </div>
   );
@@ -82,7 +87,9 @@ export const VerticalGrid = ({ section }: IMobilePreviewBlockProps) => {
             alt={item.title}
             className="w-full aspect-1/2 object-cover rounded-lg mb-1"
           />
-          <div className="text-sm font-medium truncate">{item.title}</div>
+          {section.showItemsTitle && (
+            <div className="text-sm font-medium truncate">{item.title}</div>
+          )}
         </div>
       ))}
     </div>
