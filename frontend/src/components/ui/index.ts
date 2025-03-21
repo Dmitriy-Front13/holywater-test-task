@@ -11,3 +11,4 @@ export * from './tabs';
 export * from './carousel';
 export * from './separator';
 export * from './sidebar';
+export { ReusableAlertDialog } from './reusableAlertDialog';

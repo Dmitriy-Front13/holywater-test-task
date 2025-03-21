@@ -4,59 +4,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState: IConfig = {
-  _id: `temp-${uuidv4()}`,
+  _id: "",
   name: '',
   isMain: false,
-  sections: [
-    {
-      _id: uuidv4(),
-      type: "slider",
-      title: "Slider",
-      showTitle: false,
-      showItemsTitle: false,
-      items: [],
-    },
-    {
-      _id: uuidv4(),
-      type: "horizontalGrid",
-      title: "Top Chart",
-      showTitle: true,
-      showItemsTitle: false,
-      items: [],
-    },
-    {
-      _id: uuidv4(),
-      type: "horizontalList",
-      title: "Most Trending",
-      showTitle: true,
-      showItemsTitle: false,
-      items: [],
-    },
-    {
-      _id: uuidv4(),
-      type: "banner",
-      title: "Banner",
-      showTitle: true,
-      showItemsTitle: true,
-      items: [],
-    },
-    {
-      _id: uuidv4(),
-      type: "horizontalList",
-      title: "Continue Watching",
-      showTitle: true,
-      showItemsTitle: true,
-      items: [],
-    },
-    {
-      _id: uuidv4(),
-      type: "verticalGrid",
-      title: "Most Popular",
-      showTitle: true,
-      showItemsTitle: true,
-      items: [],
-    },
-  ]
+  sections: []
 }
 
 export const activeConfigSlice = createSlice({
@@ -72,6 +23,9 @@ export const activeConfigSlice = createSlice({
     editConfigName(state, action: PayloadAction<string>) {
       state.name = action.payload;
     },
+    editConfigIsMain(state, action: PayloadAction<boolean>) {
+      state.isMain = action.payload;
+    },
     editSections(state, action: PayloadAction<ISection[]>) {
       state.sections = action.payload;
     },
@@ -82,6 +36,6 @@ export const activeConfigSlice = createSlice({
   }
 })
 
-export const { addActiveConfig, editConfigName, editSections, editSectionItems, addNewActiveConfig } = activeConfigSlice.actions;
+export const { addActiveConfig, editConfigName, editSections, editSectionItems, addNewActiveConfig, editConfigIsMain } = activeConfigSlice.actions;
 
 export default activeConfigSlice.reducer;

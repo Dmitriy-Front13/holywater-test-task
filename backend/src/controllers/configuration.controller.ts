@@ -42,3 +42,14 @@ export const updateConfiguration = async (req: Request, res: Response) => {
     res.json({ status: 500, massage: "Something went wrong" });
   }
 };
+
+export const deleteConfiguration = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    await Configuration.findByIdAndDelete(id);
+    res.json({ status: 200, massage: "Configuration deleted", });
+  } catch (e) {
+    console.log(e);
+    res.json({ status: 500, massage: "Something went wrong" });
+  }
+};

@@ -40,3 +40,15 @@ export const createConfiguration = async (config: IConfig) => {
   }
 };
 
+export const deleteConfiguration = async (id: string) => {
+  try {
+    const response = await fetchInstance(`/configurations/${id}`, {
+      method: "delete",
+    });
+    if (response.status === 200) {
+      return true;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

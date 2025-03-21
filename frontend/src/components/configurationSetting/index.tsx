@@ -6,6 +6,8 @@ import {
   CardTitle,
   Label,
 } from "../ui";
+import { DeleteCOnfigurationBUtton } from "./deleteConfigurationButton";
+import { EditIsMainSwitch } from "./editIsMainSwitch";
 import { EditNameInput } from "./editNameInput";
 import { SaveConfigButton } from "./saveConfigButton";
 
@@ -20,7 +22,10 @@ export const ConfigurationSetting = () => {
               Змініть основні налаштування для цієї конфігурації
             </CardDescription>
           </div>
-          <SaveConfigButton />
+          <div className="flex gap-2">
+            <SaveConfigButton />
+            <DeleteCOnfigurationBUtton />
+          </div>
         </div>
       </CardHeader>
       <CardContent>
@@ -29,6 +34,7 @@ export const ConfigurationSetting = () => {
             <Label htmlFor="config-name">Назва конфігурації</Label>
             <EditNameInput />
           </div>
+          <EditIsMainSwitch />
         </div>
       </CardContent>
     </Card>

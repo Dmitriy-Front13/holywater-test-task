@@ -16,9 +16,11 @@ export const AppSidebar = () => {
   return (
     <SidebarProvider>
       <Sidebar variant="inset">
-        <SidebarHeader className="flex-row items-center">
-          <img src="/icon.avif" alt="icon" className="w-6 aspect-square" />
-          <p className="font-semibold text-xl">My Drama CMS</p>
+        <SidebarHeader>
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/icon.avif" alt="icon" className="w-6 aspect-square" />
+            <p className="font-semibold text-xl">My Drama CMS</p>
+          </Link>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu className="pt-2">
