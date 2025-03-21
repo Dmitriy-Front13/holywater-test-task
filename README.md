@@ -29,8 +29,8 @@ yarn dev
 
 ```bash
 cd backend
-yarn
-yarn dev
+npm i
+npm run dev
 ```
 
 ## 📝 Схема даних (MongoDB)
