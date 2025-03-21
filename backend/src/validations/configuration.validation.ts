@@ -2,7 +2,8 @@ import { body } from "express-validator";
 import { Configuration, sectionTitles, sectionTypes } from "../models/configuration.model";
 
 export const configurationValidation = [
-  body("name", "Configuration name is required").isString().notEmpty().custom(async (value, { req }) => {
+  body("name").isString().notEmpty().custom(async (value, { req }) => {
+    console.log(req.body)
     const existingConfig = await Configuration.findOne({ name: value });
 
     if (existingConfig && existingConfig._id.toString() !== req.params?.id) {

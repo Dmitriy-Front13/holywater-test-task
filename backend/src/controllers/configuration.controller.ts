@@ -34,6 +34,7 @@ export const createConfiguration = async (_req: Request, res: Response) => {
 };
 
 export const updateConfiguration = async (req: Request, res: Response) => {
+
   try {
     const { id } = req.params;
     checkIsMain(req);

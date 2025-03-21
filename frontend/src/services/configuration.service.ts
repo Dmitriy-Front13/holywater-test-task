@@ -21,7 +21,10 @@ export const getAllConfigurations = async () => {
 export const updateConfiguration = async (config: IConfig) => {
   try {
     const response = await fetchInstance(`/configurations/${config._id}`, {
-      method: "patch",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "put",
       body: JSON.stringify(config),
     });
     if (response.status === 200) {
@@ -35,6 +38,7 @@ export const createConfiguration = async () => {
   try {
     const response = await fetchInstance<IConfig>("/configurations", {
       method: "post",
+
     });
     return response.data;
   } catch (error) {

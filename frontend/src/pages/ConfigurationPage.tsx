@@ -19,7 +19,6 @@ export const ConfigurationPage = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const { pathname } = useLocation();
-  console.log(pathname);
 
   useEffect(() => {
     const fetchConfiguration = async () => {
@@ -29,7 +28,6 @@ export const ConfigurationPage = () => {
           data = await createConfiguration();
           window.history.pushState(null, "", `/configurations/${data._id}`);
         } else {
-          console.log(id);
           data = await getConfigurationById(id!);
         }
         dispatch(addActiveConfig(data));
