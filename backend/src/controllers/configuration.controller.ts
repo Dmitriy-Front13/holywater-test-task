@@ -23,10 +23,7 @@ export const createConfiguration = async (_req: Request, res: Response) => {
   try {
     const mainConfiguration = await Configuration.findOne({ isMain: true }).lean();
     const copyMainConfiguration = { ...mainConfiguration, _id: undefined, name: "", isMain: false };
-    const newConfiguration = await Configuration.create(copyMainConfiguration);
-    newConfiguration.name = `Configuration ${newConfiguration._id}`;
-    await newConfiguration.save();
-    res.json({ status: 200, massage: "Configuration added", data: newConfiguration });
+    res.json({ status: 200, massage: "Configuration added", data: copyMainConfiguration });
   } catch (e) {
     console.log(e);
     res.json({ status: 500, massage: "Something went wrong" });
