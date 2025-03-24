@@ -1,5 +1,11 @@
 import { ISection } from "@/types";
-import { Button, Carousel, CarouselContent, CarouselItem } from "../ui";
+import {
+  Button,
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+} from "../ui";
 import { Play } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
 
@@ -7,7 +13,6 @@ interface IMobilePreviewBlockProps {
   section: ISection;
 }
 
-// TODO: add dots
 export const Slider = ({ section }: IMobilePreviewBlockProps) => {
   return (
     <Carousel>
@@ -22,6 +27,7 @@ export const Slider = ({ section }: IMobilePreviewBlockProps) => {
           </CarouselItem>
         ))}
       </CarouselContent>
+      <CarouselDots />
     </Carousel>
   );
 };
