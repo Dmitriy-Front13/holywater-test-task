@@ -12,8 +12,8 @@
 
 Проєкт задеплоєно та доступний за посиланням:
 
-- 🔗 [Фронтенд]([https://...](https://holywater-test-task.vercel.app/))
-- 🔗 [API (GET /api/screen)]([https://...](https://holywater-test-task-backend.onrender.com/api/screen))
+- 🔗 [Фронтенд](https://holywater-test-task.vercel.app/)
+- 🔗 [API (GET /api/screen)](https://holywater-test-task-backend.onrender.com/api/screen)
 
 ## 📦 Локальний запуск
 
