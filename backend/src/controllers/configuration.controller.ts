@@ -22,7 +22,7 @@ export const getMainConfiguration = async (_req: Request, res: Response) => {
 export const createConfiguration = async (_req: Request, res: Response) => {
   try {
     const mainConfiguration = await Configuration.findOne({ isMain: true }).lean();
-    const copyMainConfiguration = { ...mainConfiguration, _id: undefined, name: "", isMain: false };
+    const copyMainConfiguration = { ...mainConfiguration, _id: undefined, name: "Main configuration copy", isMain: false };
     const newConfiguration = await Configuration.create(copyMainConfiguration);
     newConfiguration.name = `Configuration ${newConfiguration._id}`;
     await newConfiguration.save();
