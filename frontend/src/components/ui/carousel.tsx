@@ -208,6 +208,7 @@ const CarouselDots = React.forwardRef<
           : "-right-8 top-1/2 -translate-y-1/2 flex-col",
         className
       )}
+      ref={ref}
       {...props}
     >
       {api?.scrollSnapList().map((_, index) => (
