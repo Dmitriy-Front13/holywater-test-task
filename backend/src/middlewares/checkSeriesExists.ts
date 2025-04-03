@@ -10,7 +10,7 @@ export const checkSeriesExists = async (
 
   const exists = await Series.exists({ _id: id });
   if (!exists) {
-    res.status(404).json({ message: "Series not found" });
+    res.status(404).json({ error: { message: "Series not found" } });
   } else {
     req.entityId = id;
     next();

@@ -14,7 +14,7 @@ export const checkSeriesTitleUnique = async (
     } else {
       res
         .status(409)
-        .json({ message: "Series with this title already exists" });
+        .json({ error: { message: "Series with this title already exists" } });
     }
   } else {
     next();

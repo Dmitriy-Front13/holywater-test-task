@@ -10,7 +10,7 @@ export const checkConfigurationExists = async (
 
   const exists = await Configuration.exists({ _id: id });
   if (!exists) {
-    res.status(404).json({ message: "Configuration not found" });
+    res.status(404).json({ error: { message: "Configuration not found" } });
   } else {
     req.entityId = id;
     next();
