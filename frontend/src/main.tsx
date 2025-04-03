@@ -1,13 +1,13 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { ConfigurationPage } from "./pages/ConfigurationPage.tsx";
-import { Toaster } from "./components/ui/sonner.tsx";
+import { ConfigurationPage } from "./components/configuration";
+import { Toaster } from "./components/shared/ui/sonner.tsx";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { store } from "./redux/store.ts";
-import { Layout } from "./layout/";
-import { ConfigurationsPage } from "./pages/ConfigurationsPage.tsx";
-import HomePage from "./pages/HomePage.tsx";
+import { Layout } from "./components/layout/index.tsx";
+import { ConfigurationsPage } from "./components/configurations/ConfigurationsPage.tsx";
+import HomePage from "./components/home";
 
 createRoot(document.getElementById("root")!).render(
   <>

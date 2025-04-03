@@ -1,16 +1,30 @@
+export const sectionTypes = [
+  "slider",
+  "horizontalGrid",
+  "verticalGrid",
+  "banner",
+  "horizontalList",
+] as const;
+export const sectionTitles = [
+  "Top Chart",
+  "Most Trending",
+  "Continue Watching",
+  "Most Popular",
+  "Slider",
+  "Banner",
+] as const;
 
-export const sectionTypes = ['slider', 'horizontalGrid', 'verticalGrid', 'banner', 'horizontalList'] as const;
-export const sectionTitles = ['Top Chart', 'Most Trending', 'Continue Watching', 'Most Popular', 'Slider', 'Banner'] as const;
+type SectionTypes = (typeof sectionTypes)[number];
+type SectionTitle = (typeof sectionTitles)[number];
 
-type SectionTypes = typeof sectionTypes[number];
-type SectionTitle = typeof sectionTitles[number];
-
-export interface ISectionItem {
+export interface ISeries {
   _id: string;
   title: string;
   description?: string;
   imageURL: string;
   exclusive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ISection {
@@ -19,7 +33,7 @@ export interface ISection {
   title: SectionTitle;
   showTitle: boolean;
   showItemsTitle: boolean;
-  items: ISectionItem[];
+  items: ISeries[];
 }
 
 export interface IConfig {
