@@ -26,14 +26,15 @@ export const SectionsList = () => {
       items={sections.map((section) => section._id)}
     >
       <div className="space-y-4">
-        {sections.map((section) => (
-          <SectionItem key={section._id} section={section} />
-        ))}
-        {sections.length === 0 && (
+        {sections.length === 0 ? (
           <div className="text-center p-8 border border-dashed rounded-lg text-muted-foreground">
             No sections added yet. Click "Add Section" to create your first
             section.
           </div>
+        ) : (
+          sections.map((section) => (
+            <SectionItem key={section._id} section={section} />
+          ))
         )}
       </div>
     </DnDWrapper>

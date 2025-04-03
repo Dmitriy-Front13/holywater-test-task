@@ -6,7 +6,7 @@ interface IItemComponentProps {
   item: ISection["items"][0];
 }
 
-export const ItemComponent = ({ item }: IItemComponentProps) => {
+export const SeriesItem = ({ item }: IItemComponentProps) => {
   const { attributes, listeners, setNodeRef, style } = useCustomSortable(
     item._id
   );

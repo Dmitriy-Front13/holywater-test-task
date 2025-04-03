@@ -1,17 +1,17 @@
 import { DnDWrapper } from "../dndHelpers/dndWrapper";
 import { ISeries } from "@/types";
-import { ItemComponent } from "./itemComponent";
 import { useAppDispatch } from "@/redux/store";
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { editSectionItems } from "@/redux/activeConfigSlice";
+import { SeriesItem } from "./seriesItem";
 
 export interface IItemListProps {
   items: ISeries[];
   sectionId: string;
 }
 
-export const ItemsList = ({ items, sectionId }: IItemListProps) => {
+export const SeriesList = ({ items, sectionId }: IItemListProps) => {
   const dispatch = useAppDispatch();
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -36,7 +36,7 @@ export const ItemsList = ({ items, sectionId }: IItemListProps) => {
         )}
         <div className="space-y-2">
           {items.map((item) => (
-            <ItemComponent item={item} key={item._id} />
+            <SeriesItem item={item} key={item._id} />
           ))}
         </div>
       </DnDWrapper>

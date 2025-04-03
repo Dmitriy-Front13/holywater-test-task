@@ -1,6 +1,7 @@
-import { IItemListProps } from "@/components/configuration/screenEditor/items/itemsList";
+import { IItemListProps } from "@/components/configuration/screenEditor/series/seriesList";
 import { IConfig, ISection } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState: IConfig = {
   _id: "",
@@ -9,6 +10,15 @@ const initialState: IConfig = {
   updatedAt: new Date(),
   createdAt: new Date(),
   sections: [],
+};
+
+const initialStateSection: ISection = {
+  _id: uuidv4(),
+  type: "horizontalGrid",
+  title: "Top Chart",
+  showTitle: false,
+  showItemsTitle: false,
+  items: [],
 };
 
 export const activeConfigSlice = createSlice({
@@ -26,6 +36,17 @@ export const activeConfigSlice = createSlice({
     },
     editConfigIsMain(state, action: PayloadAction<boolean>) {
       state.isMain = action.payload;
+    },
+    addNewSection(state) {
+      state.sections.push(initialStateSection);
+    },
+    // editSection(state, action: PayloadAction<ISection>) {
+    //   state.sections.push(action.payload);
+    // },
+    removeSectionById(state, action: PayloadAction<string>) {
+      state.sections = state.sections.filter(
+        (section) => section._id !== action.payload
+      );
     },
     editSections(state, action: PayloadAction<ISection[]>) {
       state.sections = action.payload;
@@ -46,6 +67,8 @@ export const {
   editSectionItems,
   addNewActiveConfig,
   editConfigIsMain,
+  addNewSection,
+  removeSectionById,
 } = activeConfigSlice.actions;
 
 export default activeConfigSlice.reducer;

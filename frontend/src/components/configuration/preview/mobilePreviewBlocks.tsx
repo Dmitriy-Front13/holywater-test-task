@@ -20,7 +20,7 @@ export const Slider = ({ section }: IMobilePreviewBlockProps) => {
         {section.items.map((item) => (
           <CarouselItem key={item._id}>
             <img
-              src={`/${item.imageURL}` || "/placeholder.svg"}
+              src={`${item.imageURL}` || "/placeholder.svg"}
               alt={item.title}
               className="w-[200px] h-[300px] mx-auto object-cover rounded-lg"
             />
@@ -38,7 +38,7 @@ export const Banner = ({ section }: IMobilePreviewBlockProps) => {
       <div className="w-full h-[140px] flex gap-3">
         <div className="w-1/3 h-full">
           <img
-            src={`/${section.items[0].imageURL}` || "/placeholder.svg"}
+            src={`${section.items[0].imageURL}` || "/placeholder.svg"}
             alt={section.items[0].title}
             className="w-full h-full object-cover rounded-lg"
           />
@@ -70,7 +70,7 @@ export const HorizontalGrid = ({ section }: IMobilePreviewBlockProps) => {
       {section.items.map((item) => (
         <Fragment key={item._id}>
           <img
-            src={`/${item.imageURL}` || "/placeholder.svg"}
+            src={`${item.imageURL}` || "/placeholder.svg"}
             alt={item.title}
             className="w-full h-full object-cover rounded-lg"
           />
@@ -89,7 +89,7 @@ export const VerticalGrid = ({ section }: IMobilePreviewBlockProps) => {
       {section.items.map((item) => (
         <div key={item._id} className="overflow-hidden">
           <img
-            src={`/${item.imageURL}` || "/placeholder.svg"}
+            src={`${item.imageURL}` || "/placeholder.svg"}
             alt={item.title}
             className="w-full aspect-1/2 object-cover rounded-lg mb-1"
           />
@@ -108,7 +108,7 @@ export const HorizontalList = ({ section }: IMobilePreviewBlockProps) => {
       {section.items.map((item) => (
         <div key={item._id} className="flex-shrink-0 w-[100px]">
           <img
-            src={`/${item.imageURL}` || "/placeholder.svg"}
+            src={`${item.imageURL}` || "/placeholder.svg"}
             alt={item.title}
             className="w-full h-[160px] object-cover rounded-lg mb-1"
           />
