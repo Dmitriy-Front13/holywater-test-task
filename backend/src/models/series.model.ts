@@ -9,7 +9,7 @@ interface ISeries {
 
 const SeriesSchema = new Schema<ISeries>(
   {
-    title: { type: String, required: true },
+    title: { type: String, required: true, unique: true },
     description: { type: String },
     imageURL: { type: String, required: true },
     exclusive: { type: Boolean, default: false },

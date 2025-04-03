@@ -1,14 +1,33 @@
 import { Router } from "express";
-import { createConfiguration, deleteConfiguration, getAllConfigurations, getConfigurationById, updateConfiguration } from "../controllers/configuration.controller";
+import {
+  createConfiguration,
+  deleteConfiguration,
+  getAllConfigurations,
+  getConfigurationById,
+  updateConfiguration,
+} from "../controllers/configuration.controller";
 import { configurationValidation } from "../validations/configuration.validation";
 import { validate } from "../middlewares/validate";
+import { checkConfigurationExists } from "../middlewares/checkConfigurationExists";
+import { checkSeriesTitleUnique } from "../middlewares/checkSeriesTitleUnique";
 
 const configurationRouter = Router();
 
 configurationRouter.get("/", getAllConfigurations);
-configurationRouter.get("/:id", getConfigurationById);
+configurationRouter.get("/:id", checkConfigurationExists, getConfigurationById);
 configurationRouter.post("/", createConfiguration);
-configurationRouter.put("/:id", configurationValidation, validate, updateConfiguration);
-configurationRouter.delete("/:id", deleteConfiguration);
+configurationRouter.put(
+  "/:id",
+  configurationValidation,
+  validate,
+  checkConfigurationExists,
+  checkSeriesTitleUnique,
+  updateConfiguration
+);
+configurationRouter.delete(
+  "/:id",
+  checkConfigurationExists,
+  deleteConfiguration
+);
 
 export default configurationRouter;

@@ -7,18 +7,23 @@ export const getAllConfigurations = async (_req: Request, res: Response) => {
 };
 
 export const getConfigurationById = async (req: Request, res: Response) => {
-  if (!req.params.id) {
-    res
-      .status(400)
-      .json({ error: { message: "Configuration id is required" } });
+  try {
+    const configuration = await Configuration.findById(req.params.id);
+    res.json({ data: configuration });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: { message: "Something went wrong" } });
   }
-  const configuration = await Configuration.findById(req.params.id);
-  res.json({ status: 200, data: configuration });
 };
 
 export const getMainConfiguration = async (_req: Request, res: Response) => {
-  const configuration = await Configuration.findOne({ isMain: true }).lean();
-  res.json({ data: configuration });
+  try {
+    const configuration = await Configuration.findOne({ isMain: true }).lean();
+    res.json({ data: configuration });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: { message: "Something went wrong" } });
+  }
 };
 
 export const createConfiguration = async (_req: Request, res: Response) => {
@@ -61,9 +66,7 @@ export const deleteConfiguration = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const configuration = await Configuration.findById(id);
-    if (!configuration) {
-      res.status(404).json({ error: { message: "Configuration not found" } });
-    } else if (configuration.isMain) {
+    if (configuration!.isMain) {
       res.status(403).json({
         error: {
           message: "You can't delete main configuration",
