@@ -8,6 +8,7 @@ import { store } from "./redux/store.ts";
 import { Layout } from "./components/layout/index.tsx";
 import { ConfigurationsPage } from "./components/configurations/ConfigurationsPage.tsx";
 import HomePage from "./components/home";
+import { SeriesPage } from "./components/series/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
             <Route index element={<HomePage />} />
             <Route path="/configurations" element={<ConfigurationsPage />} />
             <Route path="/configurations/:id" element={<ConfigurationPage />} />
+            <Route path="/series" element={<SeriesPage />} />
           </Route>
         </Routes>
         <Toaster />
