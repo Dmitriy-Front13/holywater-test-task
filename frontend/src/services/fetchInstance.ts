@@ -3,7 +3,6 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 interface ApiResponse<T> {
   data: T;
   message: string;
-  status: number;
 }
 type ErrorItem = { message: string };
 

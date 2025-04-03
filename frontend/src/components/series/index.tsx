@@ -34,7 +34,7 @@ export const SeriesPage = () => {
         <>
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-2xl font-bold">Всі серіали</h1>
-            <Button>
+            <Button asChild>
               <Link to="/series/create">Додати новий серіал</Link>
             </Button>
           </div>

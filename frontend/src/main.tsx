@@ -9,6 +9,8 @@ import { Layout } from "./components/layout/index.tsx";
 import { ConfigurationsPage } from "./components/configurations";
 import HomePage from "./components/home";
 import { SeriesPage } from "./components/series/index.tsx";
+import { OneSeriesPage } from "./components/oneSeries";
+import { OneSeriesForm } from "./components/oneSeries/oneSeriesForm";
 
 createRoot(document.getElementById("root")!).render(
   <>
@@ -20,6 +22,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/configurations" element={<ConfigurationsPage />} />
             <Route path="/configurations/:id" element={<ConfigurationPage />} />
             <Route path="/series" element={<SeriesPage />} />
+            <Route path="/series/:id" element={<OneSeriesPage />} />
+            <Route path="/series/create" element={<OneSeriesForm />} />
           </Route>
         </Routes>
         <Toaster />

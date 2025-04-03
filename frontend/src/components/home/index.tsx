@@ -8,14 +8,12 @@ const HomePage = () => {
       description: "Керуйте налаштуваннями та конфігураціями системи",
       link: "configurations",
       icon: <Settings className="h-8 w-8 text-primary" />,
-      isActive: true,
     },
     {
       title: "Серіали",
       description: "Перегляд та управління серіалами у вашій бібліотеці",
       link: "series",
       icon: <Film className="h-8 w-8 text-primary" />,
-      isActive: false,
     },
   ];
 
@@ -47,7 +45,6 @@ const HomePage = () => {
             description={card.description}
             link={card.link}
             icon={card.icon}
-            isActive={card.isActive}
           />
         ))}
       </div>

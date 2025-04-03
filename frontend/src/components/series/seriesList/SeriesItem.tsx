@@ -11,7 +11,7 @@ export const SeriesItem = ({ series }: ISeriesItemProps) => {
     <tr>
       <td className="py-3 px-4">
         <Button variant="link" className="p-0 h-auto font-medium text-primary">
-          <Link to={`/configurations/${series._id}`}>{series.title}</Link>
+          <Link to={`/series/${series._id}`}>{series.title}</Link>
         </Button>
       </td>
       <td className="py-3 px-4">

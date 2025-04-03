@@ -33,10 +33,10 @@ export const AppSidebar = ({ children }: { children: React.ReactNode }) => {
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <span>
+                <Link to="/series">
                   <Film className="h-4 w-4" />
                   Серіали
-                </span>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
