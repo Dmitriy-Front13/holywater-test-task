@@ -1,4 +1,4 @@
-import { DnDWrapper } from "../dndHelper/dndWrapper";
+import { DnDWrapper } from "../dndHelpers/dndWrapper";
 import { ISectionItem } from "@/types";
 import { ItemComponent } from "./itemComponent";
 import { useAppDispatch } from "@/redux/store";

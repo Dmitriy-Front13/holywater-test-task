@@ -3,7 +3,7 @@ import { SectionItem } from "./sectionItem";
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { editSections } from "@/redux/activeConfigSlice";
-import { DnDWrapper } from "../dndHelper/dndWrapper";
+import { DnDWrapper } from "../dndHelpers/dndWrapper";
 
 export const SectionsList = () => {
   const sections = useAppSelector((state) => state.activeConfig.sections);

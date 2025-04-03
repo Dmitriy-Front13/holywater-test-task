@@ -5,23 +5,10 @@ import { Button } from "../ui";
 interface IConfigurationItemProps {
   configuration: IConfig;
 }
+
 export const ConfigurationItem = ({
   configuration,
 }: IConfigurationItemProps) => {
-  const getStatusBadge = (isMain: boolean) => {
-    if (isMain)
-      return (
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-          Так
-        </span>
-      );
-
-    return (
-      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-        Ні
-      </span>
-    );
-  };
   return (
     <tr>
       <td className="py-3 px-4">
@@ -31,7 +18,17 @@ export const ConfigurationItem = ({
           </Link>
         </Button>
       </td>
-      <td className="py-3 px-4">{getStatusBadge(configuration.isMain)}</td>
+      <td className="py-3 px-4">
+        <span
+          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+            configuration.isMain
+              ? "bg-green-100 text-green-800"
+              : "bg-gray-100 text-gray-800"
+          }`}
+        >
+          {configuration.isMain ? "Так" : "Ні"}
+        </span>
+      </td>
       <td className="py-3 px-4">
         {" "}
         {new Date(configuration.updatedAt).toLocaleString("ru-RU", {

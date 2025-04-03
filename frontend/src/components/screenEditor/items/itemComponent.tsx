@@ -1,6 +1,6 @@
 import { ISection } from "@/types";
-import { DragHandleItem } from "../dndHelper/dragHandleItem";
-import { useCustomSortable } from "@/components/screenEditor/dndHelper/useCustomSortable";
+import { DragHandleItem } from "../dndHelpers/dragHandleItem";
+import { useCustomSortable } from "@/components/screenEditor/dndHelpers/useCustomSortable";
 
 interface IItemComponentProps {
   item: ISection["items"][0];
