@@ -1,26 +1,30 @@
+import { Schema, Types, model } from "mongoose";
 
-import { Schema, model } from 'mongoose';
+export const sectionTypes = [
+  "slider",
+  "horizontalGrid",
+  "verticalGrid",
+  "banner",
+  "horizontalList",
+] as const;
+export const sectionTitles = [
+  "Top Chart",
+  "Most Trending",
+  "Continue Watching",
+  "Most Popular",
+  "Slider",
+  "Banner",
+] as const;
 
-
-export const sectionTypes = ['slider', 'horizontalGrid', 'verticalGrid', 'banner', 'horizontalList'] as const;
-export const sectionTitles = ['Top Chart', 'Most Trending', 'Continue Watching', 'Most Popular', 'Slider', 'Banner'] as const;
-
-type SectionTypes = typeof sectionTypes[number];
-type SectionTitle = typeof sectionTitles[number];
-
-interface ISectionItem {
-  title: string;
-  description?: string;
-  imageURL: string;
-  exclusive: boolean;
-}
+type SectionTypes = (typeof sectionTypes)[number];
+type SectionTitle = (typeof sectionTitles)[number];
 
 interface ISection {
   type: SectionTypes;
   title: SectionTitle;
   showTitle: boolean;
   showItemsTitle: boolean;
-  items: ISectionItem[];
+  items: Types.ObjectId[];
 }
 
 interface IConfiguration {
@@ -29,27 +33,30 @@ interface IConfiguration {
   sections: ISection[];
 }
 
-const configurationSchema = new Schema<IConfiguration>({
-  name: { type: String, required: true, unique: true },
-  isMain: { type: Boolean },
-  sections: [
-    {
-      type: { type: String, required: true, enum: sectionTypes },
-      title: { type: String, required: true, enum: sectionTitles },
-      showTitle: { type: Boolean, required: true, default: true },
-      showItemsTitle: { type: Boolean, required: true, default: true },
-      items: [
-        {
-          title: { type: String, required: true },
-          showTitle: { type: Boolean },
-          description: { type: String },
-          imageURL: { type: String, required: true },
-          exclusive: { type: Boolean, default: false }
-        }
-      ]
-    }
-  ],
+const configurationSchema = new Schema<IConfiguration>(
+  {
+    name: { type: String, required: true, unique: true },
+    isMain: { type: Boolean },
+    sections: [
+      {
+        type: { type: String, required: true, enum: sectionTypes },
+        title: { type: String, required: true, enum: sectionTitles },
+        showTitle: { type: Boolean, required: true, default: true },
+        showItemsTitle: { type: Boolean, required: true, default: true },
+        items: [
+          {
+            type: Schema.Types.ObjectId,
+            ref: "Series",
+            required: true,
+          },
+        ],
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
-}, { timestamps: true })
-
-export const Configuration = model<IConfiguration>('Configuration', configurationSchema);
+export const Configuration = model<IConfiguration>(
+  "Configuration",
+  configurationSchema
+);

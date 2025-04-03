@@ -1,18 +1,18 @@
-import { IItemListProps } from "@/components/screenEditor/items/itemsList";
-import { IConfig, ISection } from "@/types"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { IItemListProps } from "@/components/configuration/screenEditor/items/itemsList";
+import { IConfig, ISection } from "@/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: IConfig = {
   _id: "",
-  name: '',
+  name: "",
   isMain: false,
   updatedAt: new Date(),
   createdAt: new Date(),
-  sections: []
-}
+  sections: [],
+};
 
 export const activeConfigSlice = createSlice({
-  name: 'activeConfig',
+  name: "activeConfig",
   initialState,
   reducers: {
     addActiveConfig(state, action: PayloadAction<IConfig>) {
@@ -31,12 +31,21 @@ export const activeConfigSlice = createSlice({
       state.sections = action.payload;
     },
     editSectionItems(state, action: PayloadAction<IItemListProps>) {
-      const index = state.sections.findIndex((section) => section._id === action.payload.sectionId);
+      const index = state.sections.findIndex(
+        (section) => section._id === action.payload.sectionId
+      );
       state.sections[index].items = action.payload.items;
-    }
-  }
-})
+    },
+  },
+});
 
-export const { addActiveConfig, editConfigName, editSections, editSectionItems, addNewActiveConfig, editConfigIsMain } = activeConfigSlice.actions;
+export const {
+  addActiveConfig,
+  editConfigName,
+  editSections,
+  editSectionItems,
+  addNewActiveConfig,
+  editConfigIsMain,
+} = activeConfigSlice.actions;
 
 export default activeConfigSlice.reducer;
