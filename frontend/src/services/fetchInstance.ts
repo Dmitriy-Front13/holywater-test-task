@@ -5,11 +5,10 @@ interface ApiResponse<T> {
   message: string;
   status: number;
 }
+type ErrorItem = { message: string };
 
 interface ErrorResponse {
-  errors: {
-    msg: string;
-  }[];
+  error: ErrorItem | ErrorItem[];
 }
 
 export const fetchInstance = async <T>(
@@ -17,17 +16,22 @@ export const fetchInstance = async <T>(
   options?: RequestInit
 ): Promise<ApiResponse<T>> => {
   try {
-    const response = await fetch(`${BACKEND_URL}/api${endpoint}`, { ...options });
+    const response = await fetch(`${BACKEND_URL}/api${endpoint}`, {
+      ...options,
+    });
     if (!response.ok) {
-      if (response.status === 400) {
-        const { errors } = await response.json() as ErrorResponse;
-        throw new Error(errors.map(error => error.msg).join(', '));
+      const { error } = (await response.json()) as ErrorResponse;
+      if (Array.isArray(error)) {
+        throw new Error(error.map((error) => error.message).join(", "));
       }
-      throw new Error(response.statusText);
+      throw new Error(error.message);
     }
     return response.json();
   } catch (error) {
-    console.error(`Ошибка: ${error}`);
-    throw new Error(`Произошла ошибка: ${error}`);
+    console.error(`Помилка: ${error}`);
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("Something went wrong");
   }
 };
