@@ -24,7 +24,7 @@ interface ISection {
   title: SectionTitle;
   showTitle: boolean;
   showItemsTitle: boolean;
-  items: { item: Types.ObjectId }[];
+  items: Types.ObjectId[];
 }
 
 interface IConfiguration {
@@ -45,11 +45,9 @@ const configurationSchema = new Schema<IConfiguration>(
         showItemsTitle: { type: Boolean, required: true, default: true },
         items: [
           {
-            item: {
-              type: Schema.Types.ObjectId,
-              ref: "Series",
-              required: true,
-            },
+            type: Schema.Types.ObjectId,
+            ref: "Series",
+            required: true,
           },
         ],
       },

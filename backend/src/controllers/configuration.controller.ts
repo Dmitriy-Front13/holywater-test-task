@@ -2,13 +2,18 @@ import { Request, Response } from "express";
 import { Configuration } from "../models/configuration.model";
 import { checkIsMain } from "../helpers/checkIsMain";
 export const getAllConfigurations = async (_req: Request, res: Response) => {
-  const configurations = await Configuration.find();
+  const configurations = await Configuration.find()
+    .populate("sections.items")
+    .lean();
   res.json({ data: configurations });
 };
 
 export const getConfigurationById = async (req: Request, res: Response) => {
   try {
-    const configuration = await Configuration.findById(req.params.id);
+    const configuration = await Configuration.findById(req.params.id)
+      .populate("sections.items")
+      .lean();
+
     res.json({ data: configuration });
   } catch (error) {
     console.log(error);
@@ -18,7 +23,10 @@ export const getConfigurationById = async (req: Request, res: Response) => {
 
 export const getMainConfiguration = async (_req: Request, res: Response) => {
   try {
-    const configuration = await Configuration.findOne({ isMain: true }).lean();
+    const configuration = await Configuration.findOne({ isMain: true })
+      .populate("sections.items")
+      .lean();
+
     res.json({ data: configuration });
   } catch (e) {
     console.log(e);
@@ -53,7 +61,7 @@ export const createConfiguration = async (_req: Request, res: Response) => {
 export const updateConfiguration = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    checkIsMain(req);
+    await checkIsMain(req);
     await Configuration.findByIdAndUpdate(id, req.body);
     res.json({ message: "Configuration updated" });
   } catch (e) {
