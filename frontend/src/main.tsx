@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { store } from "./redux/store.ts";
 import { Layout } from "./components/layout/index.tsx";
-import { ConfigurationsPage } from "./components/configurations/ConfigurationsPage.tsx";
+import { ConfigurationsPage } from "./components/configurations";
 import HomePage from "./components/home";
 import { SeriesPage } from "./components/series/index.tsx";
 

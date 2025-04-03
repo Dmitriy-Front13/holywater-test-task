@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
+
+import { useLocation, useParams } from "react-router";
+import { IConfig } from "@/types";
 import {
   createConfiguration,
   getConfigurationById,
-} from "../services/configuration.service";
-import { ErrorState } from "../components/shared/errorState";
-import { ConfigurationSetting } from "../components/configuration/configurationSetting";
-import { LoadingState } from "../components/shared/loadingState";
-import { useAppDispatch } from "../redux/store";
-import { addActiveConfig } from "../redux/activeConfigSlice";
-import { ScreenEditor } from "../components/configuration/screenEditor";
-import { Preview } from "../components/preview";
-import { useLocation, useParams } from "react-router";
-import { IConfig } from "@/types";
+} from "@/services/configuration.service";
+import { useAppDispatch } from "@/redux/store";
+import { addActiveConfig } from "@/redux/activeConfigSlice";
+import { ErrorState } from "../shared/errorState";
+import { LoadingState } from "../shared/loadingState";
+import { ConfigurationSetting } from "./configurationSetting";
+import { ScreenEditor } from "./screenEditor";
+import { Preview } from "./preview";
 
 export const ConfigurationPage = () => {
   const [error, setError] = useState<string>();
@@ -45,7 +46,7 @@ export const ConfigurationPage = () => {
   return (
     <>
       {error && <ErrorState message={error} />}
-      {loading && <LoadingState />}
+      {loading && <LoadingState message="конфігурації" />}
       {!error && !loading && (
         <div className="space-y-4">
           <ConfigurationSetting />
