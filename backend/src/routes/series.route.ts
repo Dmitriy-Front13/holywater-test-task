@@ -25,3 +25,5 @@ seriesRouter.put(
   updateSeries
 );
 seriesRouter.delete("/:id", checkSeriesExists, deleteSeries);
+
+export default seriesRouter;

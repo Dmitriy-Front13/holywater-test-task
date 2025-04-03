@@ -12,6 +12,7 @@ export const checkConfigurationExists = async (
   if (!exists) {
     res.status(404).json({ message: "Configuration not found" });
   } else {
+    req.entityId = id;
     next();
   }
 };

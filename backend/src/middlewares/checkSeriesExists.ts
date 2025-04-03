@@ -12,6 +12,7 @@ export const checkSeriesExists = async (
   if (!exists) {
     res.status(404).json({ message: "Series not found" });
   } else {
+    req.entityId = id;
     next();
   }
 };

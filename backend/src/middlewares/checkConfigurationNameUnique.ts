@@ -10,9 +10,13 @@ export const checkSeriesTitleUnique = async (
 
   const exists = await Configuration.exists({ name });
   if (exists) {
-    res
-      .status(409)
-      .json({ message: "Configuration with this name already exists" });
+    if (req.entityId && req.entityId === exists._id.toString()) {
+      next();
+    } else {
+      res
+        .status(409)
+        .json({ message: "Configuration with this name already exists" });
+    }
   } else {
     next();
   }

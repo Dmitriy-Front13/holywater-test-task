@@ -7,10 +7,15 @@ export const checkSeriesTitleUnique = async (
   next: NextFunction
 ) => {
   const { title } = req.body;
-
   const exists = await Series.exists({ title });
   if (exists) {
-    res.status(409).json({ message: "Series with this title already exists" });
+    if (req.entityId && req.entityId === exists._id.toString()) {
+      next();
+    } else {
+      res
+        .status(409)
+        .json({ message: "Series with this title already exists" });
+    }
   } else {
     next();
   }
