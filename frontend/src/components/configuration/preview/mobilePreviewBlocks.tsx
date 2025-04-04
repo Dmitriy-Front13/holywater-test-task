@@ -6,14 +6,30 @@ import {
   CarouselDots,
   CarouselItem,
 } from "../../shared/ui";
-import { Play } from "lucide-react";
+import { Play, Inbox } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
+
+interface EmptySectionPlaceholderProps {
+  message?: string;
+}
+
+const EmptySectionPlaceholder = ({
+  message = "У цьому блоці ще немає контенту.",
+}: EmptySectionPlaceholderProps) => (
+  <div className="w-full text-center py-6 px-4 text-muted-foreground text-sm italic border border-dashed rounded-md flex flex-col items-center gap-2">
+    <Inbox className="w-6 h-6 opacity-40" />
+    <span>{message}</span>
+  </div>
+);
 
 interface IMobilePreviewBlockProps {
   section: ISection;
 }
 
 export const Slider = ({ section }: IMobilePreviewBlockProps) => {
+  if (section.items.length === 0) {
+    return <EmptySectionPlaceholder message="Слайдер порожній." />;
+  }
   return (
     <Carousel>
       <CarouselContent>
@@ -33,6 +49,10 @@ export const Slider = ({ section }: IMobilePreviewBlockProps) => {
 };
 
 export const Banner = ({ section }: IMobilePreviewBlockProps) => {
+  if (section.items.length === 0 || !section.items[0]) {
+    return <EmptySectionPlaceholder message="Банер ще не заповнений." />;
+  }
+
   return (
     <div className="rounded-lg overflow-hidden">
       <div className="w-full h-[140px] flex gap-3">
@@ -65,6 +85,10 @@ export const Banner = ({ section }: IMobilePreviewBlockProps) => {
 };
 
 export const HorizontalGrid = ({ section }: IMobilePreviewBlockProps) => {
+  if (section.items.length === 0) {
+    return <EmptySectionPlaceholder message="Горизонтальна сітка порожня." />;
+  }
+
   return (
     <div className="grid grid-rows-[160px_160px] grid-flow-col auto-cols-[calc((100%-3rem)/2)] gap-3 overflow-x-auto without-scrollbar">
       {section.items.map((item) => (
@@ -84,6 +108,10 @@ export const HorizontalGrid = ({ section }: IMobilePreviewBlockProps) => {
 };
 
 export const VerticalGrid = ({ section }: IMobilePreviewBlockProps) => {
+  if (section.items.length === 0) {
+    return <EmptySectionPlaceholder message="Вертикальна сітка порожня." />;
+  }
+
   return (
     <div className="grid grid-cols-2 gap-3">
       {section.items.map((item) => (
@@ -103,6 +131,12 @@ export const VerticalGrid = ({ section }: IMobilePreviewBlockProps) => {
 };
 
 export const HorizontalList = ({ section }: IMobilePreviewBlockProps) => {
+  if (section.items.length === 0) {
+    return (
+      <EmptySectionPlaceholder message="Горизонтальний список порожній." />
+    );
+  }
+
   return (
     <div className="flex overflow-x-auto without-scrollbar gap-3 pb-2">
       {section.items.map((item) => (
