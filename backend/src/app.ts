@@ -8,6 +8,7 @@ import seriesRouter from "./routes/series.route";
 
 const port = process.env.PORT || 5000;
 const app = express();
+console.log("CORS ORIGIN:", process.env.CLIENT_URL);
 
 app.use(express.json());
 app.use(
