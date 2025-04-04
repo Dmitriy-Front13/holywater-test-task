@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { useLocation, useParams } from "react-router";
-import { IConfig } from "@/types";
-import {
-  createConfiguration,
-  getConfigurationById,
-} from "@/services/configuration.service";
+import { useParams } from "react-router";
+import { getConfigurationById } from "@/services/configuration.service";
 import { useAppDispatch } from "@/redux/store";
 import { addActiveConfig } from "@/redux/activeConfigSlice";
 import { ErrorState } from "../shared/errorState";
@@ -19,18 +15,11 @@ export const ConfigurationPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  const { pathname } = useLocation();
 
   useEffect(() => {
     const fetchConfiguration = async () => {
-      let data: IConfig;
       try {
-        if (pathname === "/configurations/create") {
-          data = await createConfiguration();
-          window.history.pushState(null, "", `/configurations/${data._id}`);
-        } else {
-          data = await getConfigurationById(id!);
-        }
+        const data = await getConfigurationById(id!);
         dispatch(addActiveConfig(data));
       } catch (e) {
         if (e instanceof Error) {

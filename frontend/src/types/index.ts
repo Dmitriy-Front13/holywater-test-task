@@ -44,3 +44,16 @@ export interface IConfig {
   updatedAt: Date;
   sections: ISection[];
 }
+
+export interface ISectionDTO {
+  type: SectionTypes;
+  title: SectionTitle;
+  showTitle: boolean;
+  showItemsTitle: boolean;
+  items: string[];
+}
+export interface IConfigDTO {
+  name: string;
+  isMain: boolean;
+  sections: ISectionDTO[];
+}

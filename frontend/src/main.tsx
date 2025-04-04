@@ -11,6 +11,7 @@ import HomePage from "./components/home";
 import { SeriesPage } from "./components/series/index.tsx";
 import { OneSeriesPage } from "./components/oneSeries";
 import { OneSeriesForm } from "./components/oneSeries/oneSeriesForm";
+import { CreateConfigurationPage } from "./components/configuration/createConfigurationPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <>
@@ -21,6 +22,10 @@ createRoot(document.getElementById("root")!).render(
             <Route index element={<HomePage />} />
             <Route path="/configurations" element={<ConfigurationsPage />} />
             <Route path="/configurations/:id" element={<ConfigurationPage />} />
+            <Route
+              path="/configurations/create"
+              element={<CreateConfigurationPage />}
+            />
             <Route path="/series" element={<SeriesPage />} />
             <Route path="/series/:id" element={<OneSeriesPage />} />
             <Route path="/series/create" element={<OneSeriesForm />} />
