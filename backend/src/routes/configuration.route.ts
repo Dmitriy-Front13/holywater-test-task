@@ -15,7 +15,13 @@ const configurationRouter = Router();
 
 configurationRouter.get("/", getAllConfigurations);
 configurationRouter.get("/:id", checkConfigurationExists, getConfigurationById);
-configurationRouter.post("/", createConfiguration);
+configurationRouter.post(
+  "/",
+  configurationValidation,
+  validate,
+  checkSeriesTitleUnique,
+  createConfiguration
+);
 configurationRouter.put(
   "/:id",
   configurationValidation,

@@ -12,14 +12,14 @@ const initialState: IConfig = {
   sections: [],
 };
 
-const initialStateSection: ISection = {
+const createNewSection = (): ISection => ({
   _id: uuidv4(),
   type: "horizontalGrid",
   title: "Top Chart",
   showTitle: false,
   showItemsTitle: false,
   items: [],
-};
+});
 
 export const activeConfigSlice = createSlice({
   name: "activeConfig",
@@ -38,7 +38,7 @@ export const activeConfigSlice = createSlice({
       state.isMain = action.payload;
     },
     addNewSection(state) {
-      state.sections.push(initialStateSection);
+      state.sections.push(createNewSection());
     },
     removeSectionById(state, action: PayloadAction<string>) {
       state.sections = state.sections.filter(

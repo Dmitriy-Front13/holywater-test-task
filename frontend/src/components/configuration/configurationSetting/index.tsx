@@ -6,12 +6,18 @@ import {
   CardTitle,
   Label,
 } from "../../shared/ui";
+import { CreateConfigurationButton } from "./createConfigurationButton";
 import { DeleteCOnfigurationBUtton } from "./deleteConfigurationButton";
 import { EditIsMainSwitch } from "./editIsMainSwitch";
 import { EditNameInput } from "./editNameInput";
 import { SaveConfigButton } from "./saveConfigButton";
 
-export const ConfigurationSetting = () => {
+interface IConfigurationSettingProps {
+  isNewConfig?: boolean;
+}
+export const ConfigurationSetting = ({
+  isNewConfig = false,
+}: IConfigurationSettingProps) => {
   return (
     <Card>
       <CardHeader>
@@ -22,10 +28,14 @@ export const ConfigurationSetting = () => {
               Змініть основні налаштування для цієї конфігурації
             </CardDescription>
           </div>
-          <div className="flex gap-2">
-            <SaveConfigButton />
-            <DeleteCOnfigurationBUtton />
-          </div>
+          {isNewConfig ? (
+            <CreateConfigurationButton />
+          ) : (
+            <div className="flex gap-2">
+              <SaveConfigButton />
+              <DeleteCOnfigurationBUtton />
+            </div>
+          )}
         </div>
       </CardHeader>
       <CardContent>

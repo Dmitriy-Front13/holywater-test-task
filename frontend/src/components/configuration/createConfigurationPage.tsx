@@ -12,7 +12,7 @@ export const CreateConfigurationPage = () => {
 
   return (
     <div className="space-y-4">
-      <ConfigurationSetting />
+      <ConfigurationSetting isNewConfig/>
       <div className="grid grid-cols-[1fr_600px] gap-6">
         <ScreenEditor />
         <Preview />
