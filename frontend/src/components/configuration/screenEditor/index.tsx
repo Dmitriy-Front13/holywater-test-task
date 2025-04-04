@@ -10,9 +10,15 @@ import {
 } from "../../shared/ui";
 import { SectionsList } from "./section/sectionsList";
 import { addNewSection } from "@/redux/activeConfigSlice";
+import { useEffect } from "react";
+import { fetchAllSeries } from "@/redux/seriesSlice";
 
 export const ScreenEditor = () => {
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchAllSeries());
+  }, []);
+
   return (
     <Card>
       <CardHeader>

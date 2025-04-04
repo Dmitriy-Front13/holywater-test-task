@@ -39,7 +39,7 @@ export function ComboboxSelect({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full min-w-[200px] justify-between"
+          className="w-full max-w-[250px] justify-between"
           id={id}
         >
           {value || placeholder}
@@ -51,7 +51,7 @@ export function ComboboxSelect({
         side="bottom"
         align="start"
         avoidCollisions={false}
-        className="z-[9999] w-[var(--radix-popover-trigger-width)] p-0 overflow-visible bg-background border rounded-md shadow-md"
+        className="max-w-[250px]"
       >
         <Command className="w-full">
           <CommandList className="max-h-60 overflow-y-auto">

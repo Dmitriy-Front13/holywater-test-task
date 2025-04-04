@@ -23,22 +23,32 @@ export const SeriesList = ({ items, sectionId }: IItemListProps) => {
       dispatch(editSectionItems({ sectionId, items: newItems }));
     }
   };
+  const handleRemoveSeries = (id: string) => {
+    const updated = items.filter((i) => i._id !== id);
+    dispatch(editSectionItems({ sectionId, items: updated }));
+  };
+
   return (
     <>
       <DnDWrapper
         items={items.map((item) => item._id)}
         handleDragEnd={handleDragEnd}
       >
-        {items.length === 0 && (
+        {items.length === 0 ? (
           <div className="text-center p-4 border border-dashed rounded-md text-muted-foreground">
             No items in this section. Click "Add Item" to create one.
           </div>
+        ) : (
+          <div className="space-y-2">
+            {items.map((item) => (
+              <SeriesItem
+                item={item}
+                key={item._id}
+                handleDeleteItem={handleRemoveSeries}
+              />
+            ))}
+          </div>
         )}
-        <div className="space-y-2">
-          {items.map((item) => (
-            <SeriesItem item={item} key={item._id} />
-          ))}
-        </div>
       </DnDWrapper>
     </>
   );

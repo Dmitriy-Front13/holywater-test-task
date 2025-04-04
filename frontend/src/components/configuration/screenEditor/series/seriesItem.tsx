@@ -1,12 +1,15 @@
 import { ISection } from "@/types";
 import { DragHandleItem } from "../dndHelpers/dragHandleItem";
 import { useCustomSortable } from "@/components/configuration/screenEditor/dndHelpers/useCustomSortable";
+import { Button } from "@/components/shared/ui";
+import { Trash2 } from "lucide-react";
 
 interface IItemComponentProps {
   item: ISection["items"][0];
+  handleDeleteItem: (id: string) => void;
 }
 
-export const SeriesItem = ({ item }: IItemComponentProps) => {
+export const SeriesItem = ({ item, handleDeleteItem }: IItemComponentProps) => {
   const { attributes, listeners, setNodeRef, style } = useCustomSortable(
     item._id
   );
@@ -28,6 +31,13 @@ export const SeriesItem = ({ item }: IItemComponentProps) => {
             )}
           </div>
         </div>
+        <Button
+          variant="destructive"
+          onClick={() => handleDeleteItem(item._id)}
+          size="icon"
+        >
+          <Trash2 />
+        </Button>
       </div>
     </div>
   );
