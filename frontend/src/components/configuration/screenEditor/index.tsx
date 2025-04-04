@@ -15,7 +15,7 @@ export const ScreenEditor = () => {
   const dispatch = useAppDispatch();
   return (
     <Card>
-      <CardHeader className="">
+      <CardHeader>
         <CardTitle>Конфігурація секцій</CardTitle>
         <CardDescription>
           Перетягніть і відпустіть елементи, щоб змінити порядок порядок блоків.

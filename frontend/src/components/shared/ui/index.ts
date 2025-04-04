@@ -13,4 +13,8 @@ export * from "./separator";
 export * from "./sidebar";
 export * from "./badge";
 export * from "./form";
+export * from "./popover";
+export * from "./dialog";
+export * from "./command";
+export { ComboboxSelect } from "./combobox";
 export { ReusableAlertDialog } from "./reusableAlertDialog";

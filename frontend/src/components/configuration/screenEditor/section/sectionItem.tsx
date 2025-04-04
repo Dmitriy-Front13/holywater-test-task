@@ -6,10 +6,15 @@ import { Button } from "@/components/shared/ui";
 import { Trash2 } from "lucide-react";
 import { useAppDispatch } from "@/redux/store";
 import { removeSectionById } from "@/redux/activeConfigSlice";
+import { useState } from "react";
+import { SectionEditor } from "./sectionEditor";
+
 interface ISectionItemProps {
   section: ISection;
 }
+
 export const SectionItem = ({ section }: ISectionItemProps) => {
+  const [isEditing, setIsEditing] = useState(false);
   const { attributes, listeners, setNodeRef, style } = useCustomSortable(
     section._id
   );
@@ -23,7 +28,12 @@ export const SectionItem = ({ section }: ISectionItemProps) => {
           <h3 className="text-lg font-medium">{section.title}</h3>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline">Редагувати</Button>
+          <Button
+            variant="outline"
+            onClick={() => setIsEditing((prev) => !prev)}
+          >
+            {isEditing ? "Приховати" : "Редагувати"}
+          </Button>
           <Button
             variant="destructive"
             size="icon"
@@ -33,6 +43,7 @@ export const SectionItem = ({ section }: ISectionItemProps) => {
           </Button>
         </div>
       </div>
+      {isEditing && <SectionEditor section={section} />}
       <div className="mt-2">
         <SeriesList items={section.items} sectionId={section._id} />
       </div>

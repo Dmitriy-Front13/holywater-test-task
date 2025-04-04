@@ -1,6 +1,6 @@
 import { IItemListProps } from "@/components/configuration/screenEditor/series/seriesList";
 import { IConfig, ISection } from "@/types";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState: IConfig = {
@@ -40,13 +40,24 @@ export const activeConfigSlice = createSlice({
     addNewSection(state) {
       state.sections.push(initialStateSection);
     },
-    // editSection(state, action: PayloadAction<ISection>) {
-    //   state.sections.push(action.payload);
-    // },
     removeSectionById(state, action: PayloadAction<string>) {
       state.sections = state.sections.filter(
         (section) => section._id !== action.payload
       );
+    },
+    updateSectionField<K extends keyof ISection>(
+      state: Draft<IConfig>,
+      action: PayloadAction<{
+        sectionId: string;
+        key: K;
+        value: ISection[K];
+      }>
+    ) {
+      const { sectionId, key, value } = action.payload;
+      const section = state.sections.find((s) => s._id === sectionId);
+      if (section) {
+        section[key] = value;
+      }
     },
     editSections(state, action: PayloadAction<ISection[]>) {
       state.sections = action.payload;
@@ -69,6 +80,7 @@ export const {
   editConfigIsMain,
   addNewSection,
   removeSectionById,
+  updateSectionField,
 } = activeConfigSlice.actions;
 
 export default activeConfigSlice.reducer;

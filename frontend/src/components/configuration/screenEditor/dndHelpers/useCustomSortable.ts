@@ -11,6 +11,6 @@ export const useCustomSortable = (id: string) => {
     attributes,
     listeners,
     setNodeRef,
-    style
-  }
+    style,
+  };
 };

@@ -16,7 +16,6 @@ const HomePage = () => {
       icon: <Film className="h-8 w-8 text-primary" />,
     },
   ];
-
   return (
     <div className="flex flex-col items-center p-6 max-w-7xl mx-auto">
       <div className="text-center mb-10">
@@ -27,7 +26,6 @@ const HomePage = () => {
           Тут ви можете вибрати, що хочете переглянути сьогодні.
         </p>
       </div>
-
       <div className="relative w-32 h-32 mb-10">
         <img
           src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
